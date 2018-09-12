@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { tasks } from "../tasks.json"
+import { tasks } from "../tasks.json";
+import FormTask from "./FormTask";
+
 class Tasks extends Component {
     constructor(props) {
         super(props);
