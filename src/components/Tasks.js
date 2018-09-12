@@ -5,8 +5,8 @@ class Tasks extends Component {
         super(props);
         this.state = {
             tasks: tasks,
-            totalTasks: 30
         };
+        this.props.total(this.state.tasks.length);
     }
 
     showTasks() {

@@ -10,30 +10,21 @@ class App extends Component {
     this.state = {
       totalTasks : 0
     }
-
-    this.handleChange = this.handleChange.bind(this);
   }
 
-
-  setTotalTasks(tasks) {
-    console.log("This ", tasks);
-    /*if (tasks) {
+  getTotalTasks(total) {
+    if (total) {
       this.setState({
-        totalTasks: tasks.length
+        totalTasks : total
       });
-    }*/
-  }
-
-  handleChange(e){
-    console.log('e ', e);
-    this.setState({enableActions : e.target.checked});
-  }
+    }
+  };
 
   render() {
     return (
       <div className="App">
         <Navigation title="tasks" total={this.state.totalTasks}/>
-        <Tasks total={this.state.totalTasks}/>
+        <Tasks total={total => this.getTotalTasks(total)} />
         <img src={logo} className="App-logo" alt="logo" />
       </div>
     );
