@@ -1,18 +1,40 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Navigation from './components/Navigation';
+import Tasks from './components/Tasks';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      totalTasks : 0
+    }
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+
+  setTotalTasks(tasks) {
+    console.log("This ", tasks);
+    /*if (tasks) {
+      this.setState({
+        totalTasks: tasks.length
+      });
+    }*/
+  }
+
+  handleChange(e){
+    console.log('e ', e);
+    this.setState({enableActions : e.target.checked});
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Navigation title="tasks" total={this.state.totalTasks}/>
+        <Tasks total={this.state.totalTasks}/>
+        <img src={logo} className="App-logo" alt="logo" />
       </div>
     );
   }
