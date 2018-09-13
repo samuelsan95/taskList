@@ -13,21 +13,24 @@ class App extends Component {
       tasks: tasks,
     }
     this.addTask = this.addTask.bind(this);
-    this.getTotalTasks = this.getTotalTasks.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
   }
-
-  getTotalTasks(total) {
-    if (total) {
-      this.setState({
-        totalTasks : total
-      });
-    }
-  };
 
   addTask(task) {
     this.setState({
       tasks: [...this.state.tasks, task]
     });
+  }
+
+  deleteTask(numTask) {
+    if ((window.confirm('Are you sure you want to delete it?'))) {
+      let tasks = this.state.tasks.concat();
+      this.setState({
+        tasks: tasks.filter((e, i) => {
+          return i !== numTask;
+        })
+      });
+    }
   }
 
   render() {
@@ -44,7 +47,7 @@ class App extends Component {
 
             <div className="col-md-8">
               <div className="row">
-                <Tasks tasks={this.state.tasks}/>
+                <Tasks tasks={this.state.tasks} onDeleteTask={this.deleteTask}/>
               </div>
             </div>
           </div>

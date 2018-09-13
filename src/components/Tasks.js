@@ -2,8 +2,11 @@ import React, { Component } from "react";
 
 class Tasks extends Component {
 
+    handleDelete(numTask) {
+        this.props.onDeleteTask(numTask);
+    }
+
     showTasks(tasks) {
-        console.log('Tasks ', tasks);
         return tasks.map((task, i) => {
             return (
                 <div className="col-sm-4 col-md-4 col-lg-4" key={i}>
@@ -17,6 +20,9 @@ class Tasks extends Component {
                         <div className="card-body">
                             <p>{task.description}</p>
                             <p><mark>{task.responsible}</mark></p>
+                        </div>
+                        <div className="card-footer">
+                            <button className="btn btn-danger" onClick={this.handleDelete.bind(this, i)}>Delete</button>
                         </div>
                     </div>
                 </div>
