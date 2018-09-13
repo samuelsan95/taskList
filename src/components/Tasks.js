@@ -1,18 +1,10 @@
 import React, { Component } from "react";
-import { tasks } from "../tasks.json";
-import FormTask from "./FormTask";
 
 class Tasks extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            tasks: tasks,
-        };
-        this.props.total(this.state.tasks.length);
-    }
 
-    showTasks() {
-        return this.state.tasks.map((task, i) => {
+    showTasks(tasks) {
+        console.log('Tasks ', tasks);
+        return tasks.map((task, i) => {
             return (
                 <div className="col-sm-4 col-md-4 col-lg-4" key={i}>
                     <div className="card mt-4">
@@ -32,8 +24,9 @@ class Tasks extends Component {
         });
         
     }
+
     render() {
-        const tasksList = this.showTasks();
+        const tasksList = this.showTasks(this.props.tasks);
         return (
             <div className="container">
                 <div className="row mt-4">

@@ -18,5 +18,6 @@
             "description": "Lorem impsum 3",
             "priority": "high"
         }
-    ]
+    ],
+    "priorities": ["low", "medium", "high"]
 }
